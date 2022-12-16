@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6269244086951350557}
   - component: {fileID: 6269244086951350558}
   - component: {fileID: 6269244086951350559}
+  - component: {fileID: 7761667643783147669}
   m_Layer: 0
   m_Name: Meteorite
   m_TagString: Untagged
@@ -121,6 +122,9 @@ MonoBehaviour:
   Speed: 3
   Damage: 1
   health: 5
+  animator: {fileID: 7761667643783147669}
+  boxCollider: {fileID: 6269244086951350559}
+  rigidbody: {fileID: 6269244086951350557}
 --- !u!61 &6269244086951350559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,10 +138,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.0057370663}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.21}
     oldSize: {x: 0.5625, y: 1.3125}
     newSize: {x: 0.5625, y: 1.3125}
     adaptiveTilingThreshold: 0.5
@@ -145,5 +149,24 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5625, y: 1.3125}
+  m_Size: {x: 0.5625, y: 0.5625653}
   m_EdgeRadius: 0
+--- !u!95 &7761667643783147669
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269244086951350528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9196c0a2ce9c824386ba1d0d5de7505, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

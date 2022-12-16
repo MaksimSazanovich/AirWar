@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Meteorite : Enemy
 {
+    [SerializeField] private Animator animator;
+    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private Rigidbody2D rigidbody;
+
+    private void Start()
+    {
+        boxCollider.enabled = true;
+        rigidbody.bodyType = RigidbodyType2D.Kinematic;
+    }
     protected override void Move()
     {
         Rigidbody.MovePosition(Rigidbody.position + Speed * Time.fixedDeltaTime * Vector2.down);
@@ -23,9 +32,16 @@ public class Meteorite : Enemy
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            boxCollider.enabled = false;
+            rigidbody.bodyType = RigidbodyType2D.Static;
+            animator.SetTrigger("Explode");
+            Invoke("DestroyObject", 1f);
         }
     }
 
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 
 }

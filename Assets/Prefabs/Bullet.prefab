@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8736221292929153233}
   - component: {fileID: 505773092105871850}
   - component: {fileID: 41099709399538500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -160,3 +160,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  impactEffect: {fileID: 141648509959534929, guid: a5735644323213c4d8192560d76487ec, type: 3}
