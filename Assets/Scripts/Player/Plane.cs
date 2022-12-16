@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Plane : MonoBehaviour
 {
     private Animator animator;
 
-    [SerializeField] private int heath = 3;
+    [SerializeField] private int health = 3;
+
+    public UnityEvent<int> HealthChanged;
+
+    private void Start()
+    {
+        HealthChanged.Invoke(health);
+    }
     void Update()
     {
         animator.Play("Fly");
@@ -14,8 +22,9 @@ public class Plane : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        heath -= damage;
-        if (heath <= 0)
+        health -= damage;
+        HealthChanged.Invoke(health);
+        if (health <= 0)
         {
             Time.timeScale = 0;
         }

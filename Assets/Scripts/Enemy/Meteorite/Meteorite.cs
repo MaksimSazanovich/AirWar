@@ -22,8 +22,9 @@ public class Meteorite : Enemy
     {
         if (collision.gameObject.TryGetComponent(out Plane plane))
         {
-             Destroy(collision.gameObject);
-            //plane.ApplyDamage(Damage);
+             //Destroy(collision.gameObject);
+            plane.ApplyDamage(Damage);
+            Explode();
         }
     }
 
@@ -32,16 +33,21 @@ public class Meteorite : Enemy
         health -= damage;
         if (health <= 0)
         {
-            boxCollider.enabled = false;
-            rigidbody.bodyType = RigidbodyType2D.Static;
-            animator.SetTrigger("Explode");
-            Invoke("DestroyObject", 1f);
+            Explode();
         }
     }
 
     private void DestroyObject()
     {
         Destroy(gameObject);
+    }
+
+    private void Explode()
+    {
+        boxCollider.enabled = false;
+        rigidbody.bodyType = RigidbodyType2D.Static;
+        animator.SetTrigger("Explode");
+        Invoke("DestroyObject", 1f);
     }
 
 }
