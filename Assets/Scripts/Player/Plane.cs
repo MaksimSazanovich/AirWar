@@ -5,14 +5,19 @@ using UnityEngine;
 public class Plane : MonoBehaviour
 {
     private Animator animator;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    [SerializeField] private int heath = 3;
     void Update()
     {
         animator.Play("Fly");
+    }
+
+    public void ApplyDamage(int damage)
+    {
+        heath -= damage;
+        if (heath <= 0)
+        {
+            Time.timeScale = 0;
+        }
     }
 }

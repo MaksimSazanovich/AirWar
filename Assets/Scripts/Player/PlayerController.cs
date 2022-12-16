@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private DynamicJoystick joystick;
     //[SerializeField] private RectTransform handle;
 
-    //private Rigidbody2D rigidbody2D;
+    //private Rigidbody2D Rigidbody;
     //private Vector2 direction = Vector2.zero;
 
     //[SerializeField] private float speed = 3f;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     //private void Awake()
     //{
-    //    rigidbody2D = GetComponent<Rigidbody2D>();
+    //    Rigidbody = GetComponent<Rigidbody2D>();
     //}
     //private void FixedUpdate()
     //{
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     //        {
     //            direction.x = joystick.Horizontal - hor;
     //            direction.y = joystick.Vertical - vert;
-    //            rigidbody2D.MovePosition(rigidbody2D.position + speed * Time.fixedDeltaTime * direction);
+    //            Rigidbody.MovePosition(Rigidbody.position + speed * Time.fixedDeltaTime * direction);
     //        }
     //    }
     //}
