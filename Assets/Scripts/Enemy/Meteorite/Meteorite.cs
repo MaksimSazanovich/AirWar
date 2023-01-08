@@ -7,33 +7,38 @@ public class Meteorite : Enemy
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private Rigidbody2D rigidbody;
-
+    [SerializeField] private AudioSource explosionSound;
     private void Start()
     {
+        score = 45;
         boxCollider.enabled = true;
         rigidbody.bodyType = RigidbodyType2D.Kinematic;
     }
     protected override void Move()
     {
-        Rigidbody.MovePosition(Rigidbody.position + Speed * Time.fixedDeltaTime * Vector2.down);
+        Rigidbody.MovePosition(Rigidbody.position + speed * Time.fixedDeltaTime * Vector2.down);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Plane plane))
         {
-             //Destroy(collision.gameObject);
-            plane.ApplyDamage(Damage);
+            plane.ApplyDamage(damage);
             Explode();
         }
     }
+
+
 
     public override void ApplyDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
         {
+            explosionSound.Play();
             Explode();
+            FindObjectOfType<ScoreCounter>().AddScore(score);
+            FindObjectOfType<DestroyedEnemyCounter>().AddDestroyedNumber("Meteorite");
         }
     }
 

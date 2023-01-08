@@ -3,43 +3,24 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-//[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] private DynamicJoystick joystick;
-    //[SerializeField] private RectTransform handle;
-
-    //private Rigidbody2D Rigidbody;
-    //private Vector2 direction = Vector2.zero;
-
-    //[SerializeField] private float speed = 3f;
-    //[SerializeField] private float hor;
-    //[SerializeField] private float vert;
-
-    //private void Awake()
-    //{
-    //    Rigidbody = GetComponent<Rigidbody2D>();
-    //}
-    //private void FixedUpdate()
-    //{
-    //    if (handle.position.x != 62.75344 || handle.position.y != 111.5617)
-    //    {
-    //        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
-    //        {
-    //            direction.x = joystick.Horizontal - hor;
-    //            direction.y = joystick.Vertical - vert;
-    //            Rigidbody.MovePosition(Rigidbody.position + speed * Time.fixedDeltaTime * direction);
-    //        }
-    //    }
-    //}
-
-    //private void Update()
-    //{
-
-    //}
 
     private Vector3 mOffset;
     private float mZCoord;
+
+    private float xMin;
+    private float yMin;
+    private float xMax;
+    private float yMax;
+
+    [SerializeField] private float padding;
+
+    private void Update()
+    {
+        CheckBoundaries();
+    }
+
     private void OnMouseDrag()
     {
         transform.position = GetMouseWorldPos() + mOffset;
@@ -56,5 +37,28 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePoint = Input.mousePosition;
         mousePoint.z = mZCoord;
         return Camera.main.ScreenToWorldPoint(mousePoint);
+    }
+
+    private void CheckBoundaries()
+    {
+        Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
+        if (transform.position.x < -screenBounds.x)
+        {
+            transform.position = new Vector2(-screenBounds.x, transform.position.y);
+        }
+        else if (transform.position.x > screenBounds.x)
+        {
+            transform.position = new Vector2(screenBounds.x, transform.position.y);
+        }
+
+        if (transform.position.y < -screenBounds.y)
+        {
+            transform.position = new Vector2(transform.position.x, -screenBounds.y);
+        }
+        else if (transform.position.y > screenBounds.y)
+        {
+            transform.position = new Vector2(transform.position.x, screenBounds.y);
+        }
     }
 }
