@@ -28174,6 +28174,7 @@ MonoBehaviour:
   _enemyPrefabs:
   - {fileID: 6269244086951350528, guid: cbe416eff93c6e844ad48a9b14b628b6, type: 3}
   - {fileID: 6675747859467987933, guid: a7951f1f8f95e4c44be30dbbc3ede0ae, type: 3}
+  - {fileID: 6269244086951350528, guid: 8921a99326345034d82078ec66186539, type: 3}
   _enemyesCount: 20
   timeBetweenSpawns: 2
 --- !u!4 &1865938572

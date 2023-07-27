@@ -50,12 +50,9 @@ public class EnemySpawner : MonoBehaviour
         int randomNumber = Random.Range(0, _enemyPrefabs.Length);
         switch (randomNumber)
         {
-            case 1:
-                currentPrefab = _enemyPrefabs[0];
-                break;
-            case 2:
-                currentPrefab = _enemyPrefabs[1];
-                break;
+            case 1: currentPrefab = _enemyPrefabs[0]; break;
+            case 2: currentPrefab = _enemyPrefabs[1]; break;
+            case 3: currentPrefab = _enemyPrefabs[2]; break;
         }
         //Instantiate(currentPrefab, SetPosition(), Quaternion.identity);
         //container.InstantiatePrefab(currentPrefab, SetPosition(), Quaternion.identity, null);
