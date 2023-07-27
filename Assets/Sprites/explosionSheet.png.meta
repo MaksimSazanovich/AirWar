@@ -51,7 +51,7 @@ TextureImporter:
       213: -4673296071232268421
     second: explosionSheet_15
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -68,10 +68,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -110,6 +112,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -149,6 +153,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -508,9 +524,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      explosionSheet_2: 1609534613147465439
+      explosionSheet_12: -7478584049771859011
+      explosionSheet_10: -5106007317743781666
+      explosionSheet_6: 2610945995771802014
+      explosionSheet_1: 1423546496985901260
+      explosionSheet_14: 5516580763482517651
+      explosionSheet_3: 1744515374418887194
+      explosionSheet_7: 2215714695948436000
+      explosionSheet_5: -4385427294965493354
+      explosionSheet_13: -6537152826163025929
+      explosionSheet_0: 8458829627940324892
+      explosionSheet_11: 2585575981242953525
+      explosionSheet_4: 2975168675524721008
+      explosionSheet_8: -4591586095321075660
+      explosionSheet_15: -4673296071232268421
+      explosionSheet_9: -3041101343320405466
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

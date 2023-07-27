@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,11 +21,6 @@ public class ScoreCounter : MonoBehaviour
     {
         SetStartTime();
         highScore = PlayerPrefs.GetInt("highScore");
-
-        if (levelManager.ReturnSceneIndex() == 0)
-        {
-            highScoreText.text = "" + highScore;
-        }
     }
 
 

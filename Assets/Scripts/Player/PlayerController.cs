@@ -1,21 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Vector3 m_Offset;
+    private float m_ZCoord;
 
-    private Vector3 mOffset;
-    private float mZCoord;
+    private Vector2 _screenBounds;
 
-    private float xMin;
-    private float yMin;
-    private float xMax;
-    private float yMax;
+    [SerializeField] private Camera _cam;
 
-    [SerializeField] private float padding;
-
+    private void Start()
+    {
+        _screenBounds = _cam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, _cam.transform.position.z));
+    }
     private void Update()
     {
         CheckBoundaries();
@@ -23,42 +20,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = GetMouseWorldPos() + mOffset;
+        transform.position = GetMouseWorldPos() + m_Offset;
     }
 
     private void OnMouseDown()
     {
-        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        mOffset = gameObject.transform.position - GetMouseWorldPos();
+        m_ZCoord = _cam.WorldToScreenPoint(gameObject.transform.position).z;
+        m_Offset = gameObject.transform.position - GetMouseWorldPos();
     }
 
     private Vector3 GetMouseWorldPos()
-    { 
+    {
         Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = mZCoord;
-        return Camera.main.ScreenToWorldPoint(mousePoint);
+        mousePoint.z = m_ZCoord;
+        return _cam.ScreenToWorldPoint(mousePoint);
     }
 
     private void CheckBoundaries()
     {
-        Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
-        if (transform.position.x < -screenBounds.x)
-        {
-            transform.position = new Vector2(-screenBounds.x, transform.position.y);
-        }
-        else if (transform.position.x > screenBounds.x)
-        {
-            transform.position = new Vector2(screenBounds.x, transform.position.y);
-        }
-
-        if (transform.position.y < -screenBounds.y)
-        {
-            transform.position = new Vector2(transform.position.x, -screenBounds.y);
-        }
-        else if (transform.position.y > screenBounds.y)
-        {
-            transform.position = new Vector2(transform.position.x, screenBounds.y);
-        }
+        float X = Mathf.Clamp(transform.position.x, -_screenBounds.x, _screenBounds.x);
+        float Y = Mathf.Clamp(transform.position.y, -_screenBounds.y, _screenBounds.y);
+        transform.position = new Vector3(X, Y, 0);
     }
 }

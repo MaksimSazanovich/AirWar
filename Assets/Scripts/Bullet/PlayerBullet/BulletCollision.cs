@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -11,19 +9,22 @@ public class BulletCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Enemy enemy))
+        if (collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            enemy.ApplyDamage(damage);
-            Instantiate(impactEffect, transform.position, transform.rotation);
+            damageable.ApplyDamage(damage);
+            //Instantiate(impactEffect, transform.position, transform.rotation);
         }
         ResetObject();
     }
 
     private void ResetObject()
-    { 
+    {
         transform.rotation = Quaternion.identity;
         gameObject.SetActive(false);
     }
 
-
+    private void OnBecameInvisible()
+    {
+        ResetObject();
+    }
 }
