@@ -3,8 +3,6 @@ using Zenject;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject meteoritePrefab;
-    [SerializeField] private GameObject ufoPrefab;
     [SerializeField] private GameObject[] _enemyPrefabs;
     [SerializeField] private int _enemyesCount;
 
@@ -53,9 +51,11 @@ public class EnemySpawner : MonoBehaviour
             case 1: currentPrefab = _enemyPrefabs[0]; break;
             case 2: currentPrefab = _enemyPrefabs[1]; break;
             case 3: currentPrefab = _enemyPrefabs[2]; break;
+            case 4: currentPrefab = _enemyPrefabs[3]; break;
         }
         //Instantiate(currentPrefab, SetPosition(), Quaternion.identity);
         //container.InstantiatePrefab(currentPrefab, SetPosition(), Quaternion.identity, null);
+        enemy.transform.position = SetPosition();
         enemy.SetActive(true);
     }
 
